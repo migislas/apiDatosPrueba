@@ -1,34 +1,4 @@
 
--- -- Creation of product table
--- CREATE TABLE IF NOT EXISTS product (
---   product_id INT NOT NULL,
---   name varchar(250) NOT NULL,
---   PRIMARY KEY (product_id)
--- );
-
-
--- CREATE FUNCTION sum_n_product(IN x int,IN y int, OUT sum int, OUT prod int) AS $$
--- BEGIN
---     sum := x + y;
---     prod := x * y;
--- END;
--- $$ LANGUAGE plpgsql;
--- Creation of Metrobus Information table
--- id INT,
---       date_updated DATE,
---       vehicle_id INT,
---       vehicle_current_status INT,
---       position_latitude numeric,
---       position_longitude numeric,
---       name varchar(250),
---       position_speed numeric,
---       position_odometer numeric,
---       trip_schedule_relationship numeric,
---       trip_id INT,
---       trip_start_date varchar(250),
---       trip_route_id INT
---       );
-
 
 CREATE TABLE IF NOT EXISTS informacion (
       idMetrobus varchar(250),
@@ -46,9 +16,7 @@ CREATE TABLE IF NOT EXISTS informacion (
       tstartDate varchar(250),
       trip_route_id varchar(250)
       );
--- SLECT trip_start_date, geographic_point FROM refcursor
--- WHERE ID = 'VARIABLE'
-  -- Procedure that returns a single result set (cursor)
+
 
 CREATE OR REPLACE FUNCTION idFUNCION()  RETURNS TABLE(id varchar(250)) AS $$
   BEGIN
