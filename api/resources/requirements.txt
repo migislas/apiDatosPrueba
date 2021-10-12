@@ -4,3 +4,5 @@ pydantic==1.8.2
 psycopg2-binary==2.9.1
 fastapi-utils==0.2.1
 requests==2.25.1
+Shapely==1.7.1
+geopandas==0.8.1

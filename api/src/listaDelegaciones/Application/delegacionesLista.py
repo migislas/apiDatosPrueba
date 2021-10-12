@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 
-from src.idLIstaMetrobus.Domain.consultmbID import\
+from src.listaDelegaciones.Domain.consultmbID import\
                 consultaMannagement
 
 from src.Utils.ResponseSchemas.responseSchema import\
@@ -19,11 +19,11 @@ responses = {
 }
 
 
-@router.get("/ConsultaMetrobusID", 
+@router.get("/listaDelegaciones", 
              response_model=ResponseBaseResult, 
              responses={**responses},
              tags=["Consulta"])
-async def consultaMetrobusID(request: Request):
+async def listaDelegaciones(request: Request):
     
     Response, estatus = consultaMannagement()(
                         request.app.state.db.pool)

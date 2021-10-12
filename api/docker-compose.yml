@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  app:
+    build: .
+    command: python main.py
+    environment:
+      environment: "local"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"

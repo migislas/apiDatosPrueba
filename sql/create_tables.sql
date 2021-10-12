@@ -17,6 +17,10 @@ CREATE TABLE IF NOT EXISTS informacion (
       trip_route_id varchar(250)
       );
 
+CREATE TABLE IF NOT EXISTS alcaldias (
+      nombreAlcaldia varchar(250)
+      );
+
 
 CREATE OR REPLACE FUNCTION idFUNCION()  RETURNS TABLE(id varchar(250)) AS $$
   BEGIN
@@ -45,5 +49,23 @@ CREATE OR REPLACE FUNCTION posicion()
   BEGIN
     RETURN QUERY
     SELECT  posicionPunto,vehicle_id  FROM informacion;  
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION Coordenadas()  
+              RETURNS TABLE(  Posiciones varchar(250)) AS $$
+                                                
+  #variable_conflict use_column
+  BEGIN
+    RETURN QUERY
+    SELECT  DISTINCT posicionPunto FROM informacion;  
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION alcaldiaBusqueda()  RETURNS TABLE(alcaldia varchar(250)) AS $$
+  BEGIN
+    RETURN QUERY
+    SELECT  nombreAlcaldia  FROM alcaldias
+    ORDER BY nombreAlcaldia;   
 END;
 $$ LANGUAGE plpgsql;

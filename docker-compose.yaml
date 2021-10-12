@@ -18,6 +18,7 @@ services:
       postgres_network:
         aliases:
           - postgres_host
+          
 volumes:
   pgdata: {}
 networks:

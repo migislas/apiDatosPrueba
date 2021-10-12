@@ -30,13 +30,13 @@ responses = {
 async def consultaMetrobusID(request: Request, 
                         datosentrada:InputConsulta):
     
-    folioResponse, estatus = consultaMannagement()(
+    Response, estatus = consultaMannagement()(
                         request.app.state.db.pool,
                         datosentrada.dict())
     if estatus:
         return ResponseBaseResult(codigo=1,
                             mensaje='Consulta Exitosa', 
-                            resultado = folioResponse)
+                            resultado = Response)
     else:
         raise NotFoundException(detail={
             'mensaje':'Error consulta',
