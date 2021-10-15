@@ -17,6 +17,9 @@ from src.posicionID.Application import \
 from src.listaDelegaciones.Application import \
                     delegacionesLista
 
+from src.metrobusLabelAlcaldia.Application import \
+                    idmetrobusesalcaldia
+
 from src.dbloadInformation import datatoDb
 from src.alcaldias import alcaldiasNombres
 
@@ -40,8 +43,7 @@ app.include_router(idLIsta.router)
 app.include_router(idPosicion.router)
 
 app.include_router(delegacionesLista.router)
-
-
+app.include_router(idmetrobusesalcaldia.router)
 
 @app.on_event("startup")
 async def startup():

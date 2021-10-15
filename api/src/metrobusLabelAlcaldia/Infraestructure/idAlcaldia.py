@@ -1,17 +1,21 @@
 import psycopg2
 
 
+class idMetrobusConsulta():
+    def __init__(self, idalcaldia):
+        self.alcaldia = idalcaldia
 
-class listaDelegaciones():
 
     def idLIsta(self):
         try:
-            self.cursor.callproc('AlcaldiasconMetrobus')
+            print(self.alcaldia)
+            self.cursor.callproc('alcaldiaBusquedaUnidades',[self.alcaldia])
             respuesta =  self.cursor.fetchall()
+            
             if respuesta:
-                listaID=[elementos[0] for elementos in respuesta]
+                lista = [valorUnidad[0] for valorUnidad in respuesta ]
                 self.estatus = True
-                diccionarioRespuesta = {'respuesta':listaID}
+                diccionarioRespuesta = {'unidades':lista}
                 return diccionarioRespuesta, self.estatus
 
             else:

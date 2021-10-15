@@ -14,12 +14,10 @@ class idMetrobusConsulta():
             
             if respuesta:
                 fecha = respuesta[0][0]
-                fechastr = f'{fecha[0:4]}-{fecha[4:6]}-{fecha[6:8]}'
-                punto = respuesta[0][1].split(",")
-                Latitud = punto[0]
-                Longitud = punto[1]
+                Latitud = respuesta[0][1]
+                Longitud = respuesta[0][2]
                 self.estatus = True
-                diccionarioRespuesta = {'fecha':fechastr, 'posicion':{
+                diccionarioRespuesta = {'fecha':fecha, 'posicion':{
                     'latitud':Latitud,
                     'longitud':Longitud}
                     }

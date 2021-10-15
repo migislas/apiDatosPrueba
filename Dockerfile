@@ -1,3 +1,1 @@
-FROM postgres:latest
-
-
+FROM  postgis/postgis

@@ -13,7 +13,7 @@ services:
       - 15432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sql/zcreate_tables.sql:/docker-entrypoint-initdb.d/zcreate_tables.sql
     networks:
       postgres_network:
         aliases:
