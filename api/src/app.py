@@ -4,7 +4,6 @@ from fastapi import FastAPI
 
 #from src.user.dbAquirePool import get_connection
 from src.Utils.ErrorHandler.ErrorMannaging import  add_exception_handlers
-from src.Utils.docs422 import custom_openapi
 from fastapi_utils.tasks import repeat_every
 from src.core.dbConectionMannager import database_instance
 
@@ -31,7 +30,7 @@ import asyncio
 def get_app() -> FastAPI:
     app = FastAPI(
         title="Api Consulta de datos Metrobus",
-        description="Esta API es para la Prueba de arkdata",
+        description="API",
         version="1.0.0",
     )
     add_exception_handlers(app)
@@ -51,11 +50,11 @@ async def startup():
     
     print("Pool de conexiones Creado")
     app.state.db = database_instance
-    alcaldias = alcaldiasNombres()
-    await datatoDb(app.state.db.pool)
-    print("Inicio Proceso de insertar a base datos de alcaldias donde hay metrobus")
-    await alcaldias.alcaldias(app.state.db.pool)
-    print("ok")
+    #alcaldias = alcaldiasNombres()
+    #await datatoDb(app.state.db.pool)
+    #print("Inicio Proceso de insertar a base datos de alcaldias donde hay metrobus")
+    #await alcaldias.alcaldias(app.state.db.pool)
+    #print("ok")
     
      
     
@@ -71,13 +70,13 @@ def close_database_connection_pools():
 
 
 
-@app.on_event("startup")
-@repeat_every(seconds=3600 )  #se actualiza cada 60 segundos
-async def InicioProceso() -> None:
-    print("+++++++++++++++++")
-    print("Inicio Proceso de insertar a base nuvos datos del MB")
-    await datatoDb(app.state.db.pool)
-    print("ok")
+# @app.on_event("startup")
+# @repeat_every(seconds=3600 )  #se actualiza cada 60 segundos
+# async def InicioProceso() -> None:
+#     print("+++++++++++++++++")
+#     print("Inicio Proceso de insertar a base nuvos datos del MB")
+#     await datatoDb(app.state.db.pool)
+#     print("ok")
     
     
 
